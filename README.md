@@ -1,6 +1,6 @@
-# Collectd-oneworetemp
+# Collectd-onewiretemp
 
-Collects Temperature Data from Linux One-Wire Kernel Driver into collectd
+Collects Temperature Data from Linux One-Wire Kernel Driver into collectd.
 
 ## Getting Started
 
