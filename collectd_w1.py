@@ -2,9 +2,7 @@ import collectd
 
 # XXX: fix hard coding.
 
-sensors = {
-        "28-0000079dc68e": "Kuehlschrank"
-        }
+sensors = {}
 
 class W1Mon(object):
     def __init__(self):
@@ -19,6 +17,10 @@ class W1Mon(object):
         for node in conf.children:
             if node.key == 'Interval':
                 self._interval = int(node.values[0])
+            elif node.key == 'Sensor':
+                sensors[node.values[0]] = node.values[1]
+                collectd.warning('Sensor: ' + node.values[0] + ' Named: ' +
+                node.values[1])
             else:
                 collectd.warning('collectd-w1 plugin: Unknown config key: %s.' % node.key)
         collectd.register_read(mon.read_callback, mon._interval)
